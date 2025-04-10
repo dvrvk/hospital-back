@@ -1,5 +1,6 @@
 package es.hrc.dermatologia_api.service;
 
+import es.hrc.dermatologia_api.DTO.PacienteDTO;
 import es.hrc.dermatologia_api.models.*;
 import es.hrc.dermatologia_api.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,15 @@ public class PacienteService {
         return pacienteRepository.findById(id);
     }
 
-    public Paciente save(Paciente paciente) {
+    public Paciente save(PacienteDTO paciente) {
+        Paciente pacienteEntity = new Paciente();
+        pacienteEntity.setEdad(paciente.getEdad());
+        pacienteEntity.setNumeroHistoria(paciente.getNumeroHistoria());
+        pacienteEntity.setGenero(paciente.getGenero());
+        return pacienteRepository.save(pacienteEntity);
+    }
+
+    public Paciente update(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
 

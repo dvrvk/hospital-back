@@ -1,5 +1,6 @@
 package es.hrc.dermatologia_api.controller;
 
+import es.hrc.dermatologia_api.DTO.PacienteDTO;
 import es.hrc.dermatologia_api.models.Paciente;
 import es.hrc.dermatologia_api.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class PacienteController {
 
     // POST → Crear un nuevo paciente
     @PostMapping
-    public ResponseEntity<?> createPaciente(@RequestBody Paciente paciente) {
+    public ResponseEntity<?> createPaciente(@RequestBody PacienteDTO paciente) {
         try {
             Paciente nuevo = pacienteService.save(paciente);
             return ResponseEntity.ok(nuevo);
@@ -52,14 +53,14 @@ public class PacienteController {
 
     // PUT → Actualizar un paciente existente
     @PutMapping("/{id}")
-    public Paciente updatePaciente(@PathVariable Long id, @RequestBody Paciente pacienteActualizado) {
+    public Paciente updatePaciente(@PathVariable Long id, @RequestBody PacienteDTO pacienteActualizado) {
         Optional<Paciente> pacienteExistente = pacienteService.findById(id);
         if (pacienteExistente.isPresent()) {
             Paciente paciente = pacienteExistente.get();
             paciente.setNumeroHistoria(pacienteActualizado.getNumeroHistoria());
             paciente.setGenero(pacienteActualizado.getGenero());
             paciente.setEdad(pacienteActualizado.getEdad());
-            return pacienteService.save(paciente);
+            return pacienteService.update(paciente);
         } else {
             return null; // o lanzar una excepción personalizada
         }
