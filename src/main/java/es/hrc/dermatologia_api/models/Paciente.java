@@ -20,10 +20,6 @@ public class Paciente {
 
     private int edad;
 
-    @JsonManagedReference("paciente-caso")
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
-    private List<CasoClinico> casosClinicos;
-
     // Constructor vacío
     public Paciente() {}
 
@@ -40,6 +36,4 @@ public class Paciente {
     public int getEdad() { return edad; }
     public void setEdad(int edad) { this.edad = edad; }
 
-    public List<CasoClinico> getCasosClinicos() { return casosClinicos; }
-    public void setCasosClinicos(List<CasoClinico> casosClinicos) { this.casosClinicos = casosClinicos; }
 }

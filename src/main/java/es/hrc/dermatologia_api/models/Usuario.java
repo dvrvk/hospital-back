@@ -23,10 +23,6 @@ public class Usuario {
 
     private String apellidos;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    @JsonManagedReference("usuario-caso")
-    private List<CasoClinico> casosClinicos;
-
     // Constructor vacío
     public Usuario() { }
 
@@ -46,6 +42,4 @@ public class Usuario {
     public String getApellidos() { return apellidos; }
     public void setApellidos(String apellidos) { this.apellidos = apellidos; }    
 
-    public List<CasoClinico> getCasosClinicos() { return casosClinicos; }
-    public void setCasosClinicos(List<CasoClinico> casosClinicos) { this.casosClinicos = casosClinicos; }
 }

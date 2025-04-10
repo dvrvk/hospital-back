@@ -27,6 +27,7 @@ public class CasoClinicoController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public ResponseEntity<CasoClinico> create(@RequestBody CasoClinico casoClinico) {
+        // AQUI DTO CASOCLINICO -> CONSULTADTO
         CasoClinico nuevo = casoClinicoService.save(casoClinico);
         return ResponseEntity.ok(nuevo);
     }

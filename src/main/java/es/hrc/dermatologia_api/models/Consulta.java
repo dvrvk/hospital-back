@@ -1,5 +1,6 @@
 package es.hrc.dermatologia_api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +15,18 @@ public class Consulta {
     private Long id;
 
     private LocalDateTime fechaConsulta;
+
+    // Relación ManyToOne con Paciente
+    @ManyToOne
+    @JsonIgnoreProperties({ "casosClinicos" })
+    @JoinColumn(name = "id_paciente")
+    private Paciente paciente;
+
+    // Relación ManyToOne con Usuario
+    @ManyToOne
+    @JsonIgnoreProperties({ "casosClinicos" })
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
     // Relación OneToMany con CasoClinico
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL)
@@ -46,5 +59,21 @@ public class Consulta {
 
     public void setCasosClinicos(List<CasoClinico> casosClinicos) {
         this.casosClinicos = casosClinicos;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
