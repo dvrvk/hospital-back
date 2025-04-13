@@ -36,6 +36,12 @@ public class Consulta {
     // Constructor vacío
     public Consulta() {}
 
+    public Consulta(LocalDateTime fechaConsulta, Paciente paciente, Usuario usuario) {
+        this.fechaConsulta = fechaConsulta;
+        this.paciente = paciente;
+        this.usuario = usuario;
+    }
+
     // Getters y Setters
     public Long getId() {
         return id;

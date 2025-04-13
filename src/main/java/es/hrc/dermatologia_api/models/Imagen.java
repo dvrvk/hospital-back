@@ -22,6 +22,11 @@ public class Imagen {
     // Constructor vacío
     public Imagen() {}
 
+    public Imagen(String url, LocalDateTime fechaImagen) {
+        this.url = url;
+        this.fechaImagen = fechaImagen;
+    }
+
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

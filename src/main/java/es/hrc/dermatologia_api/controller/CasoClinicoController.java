@@ -1,5 +1,6 @@
 package es.hrc.dermatologia_api.controller;
 
+import es.hrc.dermatologia_api.DTO.CasoClinicoDTO;
 import es.hrc.dermatologia_api.models.*;
 import es.hrc.dermatologia_api.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/casos")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CasoClinicoController {
     @Autowired
     private CasoClinicoService casoClinicoService;
@@ -26,8 +28,7 @@ public class CasoClinicoController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<CasoClinico> create(@RequestBody CasoClinico casoClinico) {
-        // AQUI DTO CASOCLINICO -> CONSULTADTO
+    public ResponseEntity<CasoClinico> create(@RequestBody CasoClinicoDTO casoClinico) {
         CasoClinico nuevo = casoClinicoService.save(casoClinico);
         return ResponseEntity.ok(nuevo);
     }

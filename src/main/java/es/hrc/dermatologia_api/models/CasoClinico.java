@@ -31,6 +31,12 @@ public class CasoClinico {
     public CasoClinico() {
     }
 
+    public CasoClinico(Consulta consulta, String diagnostico, String zona) {
+        this.consulta = consulta;
+        this.diagnostico = diagnostico;
+        this.zona = zona;
+    }
+
     // Getters y Setters
     public Long getId() {
         return id;
