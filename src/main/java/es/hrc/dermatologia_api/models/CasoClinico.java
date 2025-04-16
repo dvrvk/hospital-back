@@ -1,5 +1,6 @@
 package es.hrc.dermatologia_api.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -15,11 +16,11 @@ public class CasoClinico {
 
     // Relación ManyToOne con Consulta
     @ManyToOne
-    @JsonBackReference("consulta-caso") // ✅ AÑADIR ESTO
     @JoinColumn(name = "id_consulta")
     private Consulta consulta;
 
     // Relación OneToMany con Imagen (1 caso tiene muchas imágenes)
+    @JsonIgnoreProperties({ "casoClinico" })
     @OneToMany(mappedBy = "casoClinico", cascade = CascadeType.ALL)
     private List<Imagen> imagenes;
 

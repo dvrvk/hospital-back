@@ -28,10 +28,6 @@ public class Consulta {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    // Relación OneToMany con CasoClinico
-    @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL)
-    @JsonManagedReference("consulta-caso") // ✅ AÑADIR ESTO
-    private List<CasoClinico> casosClinicos;
 
     // Constructor vacío
     public Consulta() {}
@@ -59,13 +55,6 @@ public class Consulta {
         this.fechaConsulta = fechaConsulta;
     }
 
-    public List<CasoClinico> getCasosClinicos() {
-        return casosClinicos;
-    }
-
-    public void setCasosClinicos(List<CasoClinico> casosClinicos) {
-        this.casosClinicos = casosClinicos;
-    }
 
     public Paciente getPaciente() {
         return paciente;
